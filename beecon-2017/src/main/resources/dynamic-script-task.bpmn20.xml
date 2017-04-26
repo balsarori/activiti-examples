@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions 
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schema.omg.org/spec/BPMN/2.0 BPMN20.xsd"
+  xmlns:activiti="http://activiti.org/bpmn"
+  typeLanguage="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://www.activiti.org/bpmn2.0">
+
+  <process id="dynamic-script-task">
+
+    <startEvent id="theStart" />
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="scriptTask" />
+
+    <scriptTask id="scriptTask" scriptFormat="JavaScript" activiti:autoStoreVariables="false">
+    	<script>
+    		System.out.println("Hello");
+		</script>
+    </scriptTask>
+    <sequenceFlow id="flow2" sourceRef="scriptTask" targetRef="theEnd" />
+
+    <endEvent id="theEnd" />
+  </process>
+
+</definitions>
